@@ -1,0 +1,19 @@
+version: '3.7'
+
+volumes:
+  postgres:
+
+services:
+  postgres:
+    container_name: marketplace
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_DB: sentryc_interview
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - '5432:5432'
+    restart: unless-stopped
+ 

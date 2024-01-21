@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  jpa:
+    database: POSTGRESQL
+#    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+#    properties:
+#      hibernate:
+#        format_sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sentryc_interview?createDatabaseIfNotExist=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true
+    username: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      platform: postgres
