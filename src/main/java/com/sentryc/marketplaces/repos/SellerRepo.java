@@ -1,10 +1,8 @@
 package com.sentryc.marketplaces.repos;
 
-import com.sentryc.marketplaces.dto.ProducerSellerInfo;
 import com.sentryc.marketplaces.model.Seller;
+import com.sentryc.marketplaces.model.SellerInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

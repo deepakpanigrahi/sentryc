@@ -9,5 +9,4 @@ import java.util.UUID;
 
 @Repository
 public interface SellerInfoRepo extends JpaRepository<SellerInfo, UUID> {
-    SellerInfo findSellerInfoByName(String name);
 }

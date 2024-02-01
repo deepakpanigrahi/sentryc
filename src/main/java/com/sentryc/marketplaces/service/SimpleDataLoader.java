@@ -23,19 +23,19 @@ public class SimpleDataLoader implements CommandLineRunner {
     public void run(String... args) {
         log.info("Loading data");
 
-        for (int i = 1; i < 1000; i++) {
+        for (int i = 1; i < 100; i++) {
             MarketPlace marketPlace = new MarketPlace(
                     "Market - " + i,
                     faker.company().buzzword());
-            Producer producer = new Producer(
-                    "Producer - " + i,
-                    Timestamp.from(Instant.now()));
             SellerInfo sellerInfo = new SellerInfo(
                     faker.name().fullName(),
                     faker.internet().url(),
                     faker.country().name(),
                     faker.number().digits(6),
                     marketPlace);
+            Producer producer = new Producer(
+                    "Producer - " + i,
+                    Timestamp.from(Instant.now()));
             Seller seller = new Seller(
                     producer,
                     sellerInfo,

@@ -1,6 +1,7 @@
 package com.sentryc.marketplaces.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,9 +10,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PagebleResponse {
+@Builder
+public class SellerPagebleResponse {
     private String sellerName;
     private String externalId;
     private String marketPlaceId;
-    private List<ProducerSellerInfo> producerSellerInfos;
+    public List<ProducerSellerState> producerSellerStates;
 }

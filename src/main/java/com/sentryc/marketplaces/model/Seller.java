@@ -16,7 +16,7 @@ public class Seller {
     @Column(columnDefinition = "uuid", updatable = false, nullable = false)
     private UUID id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "producer_id", referencedColumnName = "id", nullable = false)
     private Producer producer;
 

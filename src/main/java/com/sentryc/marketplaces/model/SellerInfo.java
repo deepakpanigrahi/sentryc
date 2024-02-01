@@ -1,13 +1,14 @@
 package com.sentryc.marketplaces.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
-@Table(name = "seller_infos",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"marketplace_id", "external_id"}))
+@Table(name = "seller_infos"
+        , uniqueConstraints = @UniqueConstraint(columnNames = {"marketplace_id", "external_id"}))
 @NoArgsConstructor
 @Data
 public class SellerInfo {
@@ -28,7 +29,7 @@ public class SellerInfo {
     @Column(name = "external_id")
     private String externalId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "marketplace_id", referencedColumnName = "id")
     private MarketPlace marketPlace;
 

@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProducerSellerInfo implements Serializable {
+public class ProducerSellerState implements Serializable {
     private String producerId;
     private String producerName;
     private State state;
