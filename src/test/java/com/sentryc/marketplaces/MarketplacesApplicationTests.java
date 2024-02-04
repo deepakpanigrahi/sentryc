@@ -1,28 +1,28 @@
 //package com.sentryc.marketplaces;
 //
-//import com.sentryc.marketplaces.dto.SellerPagebleResponse;
+//import com.sentryc.marketplaces.constants.PageInput;
+//import com.sentryc.marketplaces.constants.SellerFilter;
+//import com.sentryc.marketplaces.constants.SellerSortBy;
 //import com.sentryc.marketplaces.dto.ProducerSellerState;
+//import com.sentryc.marketplaces.dto.RequestSellerDataPost;
+//import com.sentryc.marketplaces.dto.SellerPagebleResponse;
 //import com.sentryc.marketplaces.model.*;
 //import com.sentryc.marketplaces.repos.MarketPlaceRepo;
 //import com.sentryc.marketplaces.repos.ProducerRepo;
 //import com.sentryc.marketplaces.repos.SellerInfoRepo;
 //import com.sentryc.marketplaces.repos.SellerRepo;
-//import com.sentryc.marketplaces.service.SellerService;
+//import com.sentryc.marketplaces.service.MarketPlaceService;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.InjectMocks;
 //import org.mockito.Mock;
 //import org.mockito.MockitoAnnotations;
 //import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.PageRequest;
-//import org.springframework.data.domain.Sort;
 //
 //import java.util.List;
 //import java.util.UUID;
 //
-//import static org.junit.jupiter.api.Assertions.*;
-//import static org.mockito.ArgumentMatchers.any;
-//import static org.mockito.ArgumentMatchers.anyString;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertNotNull;
 //import static org.mockito.Mockito.when;
 //
 //@SpringBootTest
@@ -41,59 +41,10 @@
 //    private ProducerRepo producerRepo;
 //
 //    @InjectMocks
-//    private SellerService service;
+//    private MarketPlaceService service;
 //
 //    void setUp() {
 //        MockitoAnnotations.initMocks(this);
-//    }
-//
-//    @Test
-//    void findByPageAndSize() {
-//        when(sellerRepo.findAll(any(PageRequest.class))).thenReturn(Page.empty());
-//
-//        // When
-//        Page<Seller> result = service.findByPageAndSize(0, 10);
-//
-//        // Then
-//        assertNotNull(result);
-//        assertEquals(0, result.getTotalElements());
-//    }
-//
-//    @Test
-//    void searchSellerByName_existingSeller() {
-//        UUID toset = UUID.randomUUID();
-//        // Given
-//        SellerInfo sellerInfo = new SellerInfo();
-//        sellerInfo.setId(toset);
-//        when(sellerInfoRepo.findSellerInfoByName(anyString())).thenReturn(sellerInfo);
-//
-//        // When
-//        SellerInfo result = service.searchSellerByName("sellerName");
-//
-//        // Then
-//        assertNotNull(result);
-//        assertEquals(toset, result.getId());
-//    }
-//
-//    @Test
-//    void searchSellerByName_nonExistingSeller() {
-//        // Given
-//        when(sellerInfoRepo.findSellerInfoByName(anyString())).thenReturn(new SellerInfo());
-//
-//        // When/Then
-//        assertThrows(RuntimeException.class, () -> service.searchSellerByName("sellerName"));
-//    }
-//
-//    @Test
-//    void getSellerInfoWithSortDirection() {
-//        when(sellerInfoRepo.findAll(any(PageRequest.class))).thenReturn(Page.empty());
-//
-//        // When
-//        Page<SellerInfo> result = service.getSellerInfoWithSortDirection(0, 10, SellerService.SortValues.NAME, Sort.Direction.ASC);
-//
-//        // Then
-//        assertNotNull(result);
-//        assertEquals(0, result.getTotalElements());
 //    }
 //
 //    @Test
@@ -116,7 +67,11 @@
 //        when(sellerRepo.findAll()).thenReturn(List.of(seller));
 //
 //        // When
-//        List<SellerPagebleResponse> result = service.getAllSellerData();
+//        RequestSellerDataPost sellerDataPost = new RequestSellerDataPost(
+//                SellerFilter.EXTERNAL_ID,
+//                new PageInput(1, 2),
+//                SellerSortBy.ASC);
+//        List<SellerPagebleResponse> result = service.getSellerData(sellerDataPost);
 //
 //        // Then
 //        assertNotNull(result);

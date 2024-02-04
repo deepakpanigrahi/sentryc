@@ -25,7 +25,7 @@ public class SimpleDataLoader implements CommandLineRunner {
 
         for (int i = 1; i < 100; i++) {
             MarketPlace marketPlace = new MarketPlace(
-                    "Market - " + i,
+                    faker.app().name() + i,
                     faker.company().buzzword());
             SellerInfo sellerInfo = new SellerInfo(
                     faker.name().fullName(),

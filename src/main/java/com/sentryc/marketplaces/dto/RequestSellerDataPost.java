@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestSellerDataPost {
-//    private SellerFilter sellerFilter;
+    private SellerFilter sellerFilter;
     private PageInput pageInput;
     private SellerSortBy sellerSortBy;
 }
